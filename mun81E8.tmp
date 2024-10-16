@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddls64exbvvkw"]
+
+[ext_resource type="PackedScene" uid="uid://dm3o8ecem1pk1" path="res://escenas/niveles/lvl_1.tscn" id="1_7b2m3"]
+[ext_resource type="PackedScene" uid="uid://dakwolrcevkwv" path="res://escenas/jugador/jugador.tscn" id="2_1spox"]
+[ext_resource type="PackedScene" uid="uid://dvn8bxyr752hi" path="res://escenas/pelota/pelota.tscn" id="3_stm7b"]
+[ext_resource type="Script" path="res://scripts/Charbody2DPelotaest.gd" id="4_ju6j7"]
+[ext_resource type="PackedScene" uid="uid://bljwaue11n4o0" path="res://escenas/entorno/stage_block.tscn" id="5_qclij"]
+
+[node name="mundo" type="Node2D"]
+
+[node name="lvl_1" parent="." instance=ExtResource("1_7b2m3")]
+metadata/_edit_lock_ = true
+
+[node name="jugador" parent="." instance=ExtResource("2_1spox")]
+position = Vector2(144, 470)
+motion_mode = 1
+velocidad = 400.0
+
+[node name="pelota" parent="." instance=ExtResource("3_stm7b")]
+position = Vector2(144, 455)
+script = ExtResource("4_ju6j7")
+velPelota = 200.0
+
+[node name="stage_block" parent="." instance=ExtResource("5_qclij")]

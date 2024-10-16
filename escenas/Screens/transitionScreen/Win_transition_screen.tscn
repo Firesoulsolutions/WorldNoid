@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://gff7bs0orfv3"]
+
+[ext_resource type="Script" path="res://scripts/win_transition_screen.gd" id="1_cxygs"]
+[ext_resource type="Texture2D" uid="uid://ba3b6hcm4kt5d" path="res://recursos/fondos/background.png" id="1_pcooo"]
+[ext_resource type="Texture2D" uid="uid://gj0q4kumxweh" path="res://recursos/fondos/copa128x128.png" id="2_j54hh"]
+[ext_resource type="FontFile" uid="uid://cw20mwo8wpqyv" path="res://recursos/fonts/advanced_pixel-7.ttf" id="3_yt4f6"]
+[ext_resource type="PackedScene" uid="uid://by5aaydcp21qc" path="res://escenas/entorno/fuegosArtificiales/sistema_de_fuegos_artificiales.tscn" id="5_hjn8s"]
+[ext_resource type="PackedScene" uid="uid://banaolxta6acg" path="res://escenas/Screens/UI/boton_continuar.tscn" id="6_5pk2s"]
+[ext_resource type="AudioStream" uid="uid://c1fq313upddv0" path="res://recursos/fx/you_win.ogg" id="7_84jtd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_00uxh"]
+font = ExtResource("3_yt4f6")
+font_size = 38
+font_color = Color(1, 0.243137, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2x48y"]
+font = ExtResource("3_yt4f6")
+font_size = 30
+font_color = Color(0.152941, 1, 0.223529, 1)
+
+[node name="WinTransitionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cxygs")
+
+[node name="BackGround" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 512.0
+texture = ExtResource("1_pcooo")
+
+[node name="copa" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -128.0
+offset_right = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j54hh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 128.0
+alignment = 1
+
+[node name="Felicidades" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "¡¡¡FELICITACIONES!!!"
+label_settings = SubResource("LabelSettings_00uxh")
+horizontal_alignment = 1
+
+[node name="texto" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Has visitado las
+ 7 maravillas del mundo"
+label_settings = SubResource("LabelSettings_2x48y")
+horizontal_alignment = 1
+
+[node name="boton_Continuar" parent="." instance=ExtResource("6_5pk2s")]
+layout_mode = 0
+offset_top = 384.0
+offset_bottom = 448.0
+
+[node name="win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_84jtd")
+
+[node name="SistemaDeFuegosArtificiales" parent="." instance=ExtResource("5_hjn8s")]
+position = Vector2(144, 528)
+
+[connection signal="pressed" from="boton_Continuar/imagenBoton" to="." method="_on_continuar_boton_pressed"]
+
+[editable path="boton_Continuar"]

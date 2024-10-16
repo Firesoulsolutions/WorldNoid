@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh5ulcaofdrr1"]
+
+[ext_resource type="Script" path="res://scripts/block_control.gd" id="1_yed5c"]
+[ext_resource type="PackedScene" uid="uid://c87harv32gs2b" path="res://escenas/entorno/bloks/bloks.tscn" id="2_er1f3"]
+
+[node name="StageBlock" type="Node2D"]
+script = ExtResource("1_yed5c")
+
+[node name="Bloks" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(248, 48)
+
+[node name="Bloks2" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(56, 80)
+
+[node name="Bloks3" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(216, 16)
+
+[node name="Bloks4" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(168, 16)
+
+[node name="Bloks5" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(72, 16)
+
+[node name="Bloks6" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(40, 48)
+
+[node name="Bloks7" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(88, 144)
+
+[node name="Bloks8" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(264, 16)
+
+[node name="Bloks9" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(24, 16)
+
+[node name="Bloks10" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(184, 176)
+
+[node name="Bloks11" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(72, 112)
+
+[node name="Bloks12" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(200, 144)
+
+[node name="Bloks13" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(216, 112)
+
+[node name="Bloks14" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(120, 16)
+
+[node name="Bloks15" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(232, 80)
+
+[node name="Bloks16" parent="." instance=ExtResource("2_er1f3")]
+position = Vector2(104, 176)
+
+[connection signal="ladrilloRoto" from="Bloks" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks2" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks3" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks4" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks5" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks6" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks7" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks8" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks9" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks10" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks11" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks12" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks13" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks14" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks15" to="." method="_on_bloks_ladrillo_roto"]
+[connection signal="ladrilloRoto" from="Bloks16" to="." method="_on_bloks_ladrillo_roto"]

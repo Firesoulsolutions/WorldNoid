@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b265ytd12gjcx"]
+
+[ext_resource type="PackedScene" uid="uid://e0i6o0vje7vq" path="res://escenas/Screens/UI/botonPadre.tscn" id="1_8kwt5"]
+
+[node name="boton_opciones" instance=ExtResource("1_8kwt5")]
+
+[node name="textoBoton" parent="imagenBoton" index="0"]
+text = "Opciones"

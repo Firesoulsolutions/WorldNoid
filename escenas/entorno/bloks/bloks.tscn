@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://c87harv32gs2b"]
+
+[ext_resource type="Script" path="res://scripts/bloks.gd" id="1_j7wfd"]
+[ext_resource type="Texture2D" uid="uid://b2wq54qen8tj4" path="res://recursos/sprites/bloque.png" id="1_v6p3g"]
+[ext_resource type="AudioStream" uid="uid://o2apg3s7te5n" path="res://recursos/fx/break.ogg" id="3_jrbw4"]
+[ext_resource type="Texture2D" uid="uid://crxcb0o0bcheq" path="res://recursos/sprites/explosion.png" id="4_qmvre"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10c8g"]
+size = Vector2(34, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2k4tr"]
+size = Vector2(32, 16)
+
+[node name="bloque" type="StaticBody2D"]
+script = ExtResource("1_j7wfd")
+
+[node name="Sprite_bloque" type="Sprite2D" parent="."]
+texture = ExtResource("1_v6p3g")
+
+[node name="Area_bloque" type="Area2D" parent="Sprite_bloque"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="Collision_area_bloque" type="CollisionShape2D" parent="Sprite_bloque/Area_bloque"]
+shape = SubResource("RectangleShape2D_10c8g")
+
+[node name="Collision_staticBody_bloque" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2k4tr")
+
+[node name="fxBreak" type="AudioStreamPlayer2D" parent="." groups=["FXBreak"]]
+stream = ExtResource("3_jrbw4")
+bus = &"SFX"
+
+[node name="explosion" type="CPUParticles2D" parent="."]
+rotation = 6.28319
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("4_qmvre")
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_min = 5.0
+angular_velocity_max = 180.0
+radial_accel_max = 10.0
+
+[connection signal="body_entered" from="Sprite_bloque/Area_bloque" to="." method="_on_area_bloque_body_entered"]
+[connection signal="body_exited" from="Sprite_bloque/Area_bloque" to="." method="_on_area_bloque_body_exited"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhowqve4bvpx4"]
+
+[ext_resource type="Texture2D" uid="uid://b2wq54qen8tj4" path="res://recursos/sprites/bloque.png" id="1_oqs01"]
+[ext_resource type="Script" path="res://scripts/bloque.gd" id="1_um5b4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k380h"]
+size = Vector2(32, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i68y3"]
+size = Vector2(32, 20)
+
+[node name="bloque" type="StaticBody2D" groups=["gr_blocks"]]
+script = ExtResource("1_um5b4")
+
+[node name="Sprite_bloque" type="Sprite2D" parent="."]
+texture = ExtResource("1_oqs01")
+
+[node name="Collision_bloque" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k380h")
+
+[node name="Area2D_eliminar_bloque" type="Area2D" parent="."]
+
+[node name="Collision_eliminar_bloque" type="CollisionShape2D" parent="Area2D_eliminar_bloque"]
+shape = SubResource("RectangleShape2D_i68y3")
+
+[connection signal="body_entered" from="Area2D_eliminar_bloque" to="." method="_on_area_2d_eliminar_bloque_body_entered"]

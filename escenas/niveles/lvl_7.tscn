@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdionmy0tpk22"]
+
+[ext_resource type="Script" path="res://scripts/lvl_7_music.gd" id="1_5mkre"]
+[ext_resource type="Texture2D" uid="uid://ba3b6hcm4kt5d" path="res://recursos/fondos/background.png" id="1_xpjhk"]
+[ext_resource type="Texture2D" uid="uid://dsjxu2bvaastg" path="res://recursos/fondos/tajmahal288x512.png" id="2_0qmak"]
+[ext_resource type="PackedScene" uid="uid://c6xyshyi3stxp" path="res://escenas/entorno/bordes de la pantalla/bordes_de_la_pantalla.tscn" id="3_03cd5"]
+[ext_resource type="PackedScene" uid="uid://dh5ulcaofdrr1" path="res://escenas/entorno/stageDesign/stage_block7.tscn" id="4_g50p5"]
+[ext_resource type="PackedScene" uid="uid://cm1vfe0d4vye4" path="res://escenas/Screens/menus/menu_de_pausa.tscn" id="5_8b2lm"]
+[ext_resource type="PackedScene" uid="uid://dakwolrcevkwv" path="res://escenas/jugador/jugador.tscn" id="6_g7tb7"]
+[ext_resource type="PackedScene" uid="uid://dvn8bxyr752hi" path="res://escenas/pelota/pelota.tscn" id="7_2wv2g"]
+[ext_resource type="AudioStream" uid="uid://xhkgbeetfbp1" path="res://recursos/musica/india.mp3" id="7_frs0l"]
+
+[node name="lvl_7" type="Node2D"]
+script = ExtResource("1_5mkre")
+
+[node name="TextureRect_fondo_azul" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_xpjhk")
+
+[node name="TextureRect_fondo_tajmahal" type="TextureRect" parent="TextureRect_fondo_azul"]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 288.0
+offset_bottom = 552.0
+texture = ExtResource("2_0qmak")
+
+[node name="bordesDeLaPantalla" parent="." instance=ExtResource("3_03cd5")]
+
+[node name="StageBlock" parent="." instance=ExtResource("4_g50p5")]
+
+[node name="jugador" parent="." instance=ExtResource("6_g7tb7")]
+position = Vector2(144, 480)
+
+[node name="pelota" parent="." instance=ExtResource("7_2wv2g")]
+position = Vector2(144, 450)
+
+[node name="menuDePausa" parent="." instance=ExtResource("5_8b2lm")]
+
+[node name="AudioIndia" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_frs0l")
+bus = &"Music"
+
+[connection signal="body_entered" from="bordesDeLaPantalla/bordeAbajo/Area2dPerder" to="." method="_on_area_2d_perder_body_entered"]
+
+[editable path="bordesDeLaPantalla"]

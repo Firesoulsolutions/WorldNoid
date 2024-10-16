@@ -1,0 +1,123 @@
+[gd_scene load_steps=12 format=3 uid="uid://6210c1tsekh1"]
+
+[ext_resource type="Script" path="res://scripts/menu_de_opciones.gd" id="1_q37vw"]
+[ext_resource type="Texture2D" uid="uid://ba3b6hcm4kt5d" path="res://recursos/fondos/background.png" id="1_w7ri1"]
+[ext_resource type="FontFile" uid="uid://cw20mwo8wpqyv" path="res://recursos/fonts/advanced_pixel-7.ttf" id="2_n822m"]
+[ext_resource type="PackedScene" uid="uid://dkvnfh7p51hao" path="res://escenas/menus/boton_salir.tscn" id="3_1gxvp"]
+[ext_resource type="PackedScene" uid="uid://c4rolhf24atu5" path="res://escenas/menus/boton_volver.tscn" id="4_c0y1u"]
+[ext_resource type="AudioStream" uid="uid://bxxgksem1dg5a" path="res://recursos/fx/ClickPlastic.wav" id="5_t7dh1"]
+[ext_resource type="AudioStream" uid="uid://dhreg0mdua0xy" path="res://recursos/musica/background.ogg" id="6_bt780"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_alrto"]
+font = ExtResource("2_n822m")
+font_size = 40
+font_color = Color(1, 0.243137, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0p8i7"]
+font = ExtResource("2_n822m")
+font_size = 30
+font_color = Color(1, 0.243137, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qghey"]
+font = ExtResource("2_n822m")
+font_size = 30
+font_color = Color(1, 0.243137, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_il1ss"]
+font = ExtResource("2_n822m")
+font_size = 30
+font_color = Color(1, 0.243137, 1, 1)
+
+[node name="menuDeOpciones" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q37vw")
+
+[node name="BackGround" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 512.0
+texture = ExtResource("1_w7ri1")
+
+[node name="titulo" type="Label" parent="."]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 40.0
+text = "AUDIO"
+label_settings = SubResource("LabelSettings_alrto")
+horizontal_alignment = 1
+
+[node name="GridVolumen" type="GridContainer" parent="."]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 288.0
+offset_bottom = 83.0
+columns = 2
+
+[node name="Lbl_Master_Vol" type="Label" parent="GridVolumen"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_0p8i7")
+
+[node name="Slider_Master_Vol" type="HSlider" parent="GridVolumen"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+rounded = true
+
+[node name="Lbl_Music_Vol" type="Label" parent="GridVolumen"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_qghey")
+
+[node name="Slider_Music_Vol" type="HSlider" parent="GridVolumen"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+
+[node name="Lbl_SFX_vol" type="Label" parent="GridVolumen"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX Vol"
+label_settings = SubResource("LabelSettings_il1ss")
+
+[node name="Slider_SFX_vol" type="HSlider" parent="GridVolumen"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+
+[node name="boton_salir" parent="." instance=ExtResource("3_1gxvp")]
+layout_mode = 0
+offset_top = 272.0
+offset_bottom = 336.0
+
+[node name="boton_volver" parent="." instance=ExtResource("4_c0y1u")]
+layout_mode = 0
+offset_top = 192.0
+offset_bottom = 256.0
+
+[node name="AudioBoton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_t7dh1")
+bus = &"SFX"
+
+[node name="AudioBackGround" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bt780")
+bus = &"Music"
+
+[connection signal="value_changed" from="GridVolumen/Slider_Master_Vol" to="." method="_on_slider_master_vol_value_changed"]
+[connection signal="value_changed" from="GridVolumen/Slider_Music_Vol" to="." method="_on_slider_music_vol_value_changed"]
+[connection signal="value_changed" from="GridVolumen/Slider_SFX_vol" to="." method="_on_slider_sfx_vol_value_changed"]
+[connection signal="pressed" from="boton_salir/imagenBoton" to="." method="_on_salir_boton_pressed"]
+[connection signal="pressed" from="boton_volver/imagenBoton" to="." method="_on_volver_boton_pressed"]
+
+[editable path="boton_salir"]
+[editable path="boton_volver"]

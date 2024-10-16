@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvn8bxyr752hi"]
+
+[ext_resource type="Script" path="res://scripts/Charbody2DPelotaest.gd" id="1_0aud3"]
+[ext_resource type="Texture2D" uid="uid://ifsviygcs278" path="res://recursos/sprites/bola2-b.png" id="1_7qfd8"]
+[ext_resource type="AudioStream" uid="uid://o2apg3s7te5n" path="res://recursos/fx/break.ogg" id="3_kb3fl"]
+[ext_resource type="AudioStream" uid="uid://di1ptcmdmnhny" path="res://recursos/fx/hit.wav" id="4_3nwhm"]
+[ext_resource type="AudioStream" uid="uid://bb4vyvvk7an6y" path="res://recursos/fx/lose.ogg" id="5_yufbv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fkybs"]
+radius = 8.06226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8a88b"]
+radius = 9.0
+
+[node name="pelota" type="CharacterBody2D" groups=["pelota"]]
+collision_layer = 6
+collision_mask = 7
+script = ExtResource("1_0aud3")
+
+[node name="CollisionShape2D_pelota" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fkybs")
+
+[node name="Sprite_pelota" type="Sprite2D" parent="."]
+texture = ExtResource("1_7qfd8")
+
+[node name="AudioBreak" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kb3fl")
+bus = &"SFX"
+
+[node name="AudioHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3nwhm")
+bus = &"SFX"
+
+[node name="AudioLose" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_yufbv")
+bus = &"SFX"
+
+[node name="sparklingArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sparklingArea"]
+shape = SubResource("CircleShape2D_8a88b")

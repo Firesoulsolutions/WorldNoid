@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://banaolxta6acg"]
+
+[ext_resource type="PackedScene" uid="uid://e0i6o0vje7vq" path="res://escenas/Screens/UI/botonPadre.tscn" id="1_hw0gn"]
+
+[node name="boton_Continuar" instance=ExtResource("1_hw0gn")]
+
+[node name="textoBoton" parent="imagenBoton" index="0"]
+text = "Continuar"

@@ -1,0 +1,167 @@
+[gd_scene load_steps=16 format=3 uid="uid://x38arjvr63em"]
+
+[ext_resource type="Script" path="res://scripts/how_to_play_screen.gd" id="1_6udfy"]
+[ext_resource type="Texture2D" uid="uid://ba3b6hcm4kt5d" path="res://recursos/fondos/background.png" id="1_ewrva"]
+[ext_resource type="FontFile" uid="uid://cw20mwo8wpqyv" path="res://recursos/fonts/advanced_pixel-7.ttf" id="1_xr4cc"]
+[ext_resource type="Texture2D" uid="uid://dqhu2k4t21gtl" path="res://recursos/sprites/nave-g.png" id="2_hk7l3"]
+[ext_resource type="Texture2D" uid="uid://dsofrv7kx4hcf" path="res://recursos/fondos/pausaScreenExample.png" id="5_mak3p"]
+[ext_resource type="PackedScene" uid="uid://banaolxta6acg" path="res://escenas/Screens/UI/boton_continuar.tscn" id="6_lndmo"]
+[ext_resource type="AudioStream" uid="uid://bxxgksem1dg5a" path="res://recursos/fx/ClickPlastic.wav" id="7_sfu4w"]
+[ext_resource type="AudioStream" uid="uid://dhreg0mdua0xy" path="res://recursos/musica/background.ogg" id="8_kap1f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fg5jn"]
+font = ExtResource("1_xr4cc")
+font_size = 38
+font_color = Color(1, 0.243137, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cpk52"]
+font = ExtResource("1_xr4cc")
+font_size = 25
+font_color = Color(0.0980392, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y4j4o"]
+font = ExtResource("1_xr4cc")
+font_size = 20
+font_color = Color(0.117647, 1, 0.113725, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_aw8xw"]
+font = ExtResource("1_xr4cc")
+font_size = 25
+font_color = Color(0.0980392, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_yfuge"]
+resource_name = "MoveExample"
+length = 2.0
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EjemploPlayer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(32, 88), Vector2(250, 88)]
+}
+
+[sub_resource type="Animation" id="Animation_bi3by"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EjemploPlayer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32, 88)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eqd3c"]
+_data = {
+"MoveExample": SubResource("Animation_yfuge"),
+"RESET": SubResource("Animation_bi3by")
+}
+
+[node name="HowToPlayScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6udfy")
+
+[node name="BackGround" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 512.0
+texture = ExtResource("1_ewrva")
+
+[node name="EjemploPlayer" type="Sprite2D" parent="."]
+position = Vector2(32, 88)
+texture = ExtResource("2_hk7l3")
+
+[node name="HowToPlay y player movement" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 69.0
+grow_horizontal = 2
+
+[node name="titulo" type="Label" parent="HowToPlay y player movement"]
+layout_mode = 2
+text = "COMO JUGAR"
+label_settings = SubResource("LabelSettings_fg5jn")
+horizontal_alignment = 1
+
+[node name="tituloMover" type="Label" parent="HowToPlay y player movement"]
+layout_mode = 2
+text = "Movimiento del Jugador"
+label_settings = SubResource("LabelSettings_cpk52")
+horizontal_alignment = 1
+
+[node name="Explicaciones" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 104.0
+offset_right = 288.0
+offset_bottom = 270.0
+
+[node name="ExplicacionMover" type="Label" parent="Explicaciones"]
+layout_mode = 2
+text = "Mueve al jugados usando
+las teclas \"A\" (izquierda) 
+y \"D\" (derecha)"
+label_settings = SubResource("LabelSettings_y4j4o")
+horizontal_alignment = 1
+
+[node name="titulo" type="Label" parent="Explicaciones"]
+layout_mode = 2
+text = "Pause menu"
+label_settings = SubResource("LabelSettings_aw8xw")
+horizontal_alignment = 1
+
+[node name="ExplicacionPausa" type="Label" parent="Explicaciones"]
+layout_mode = 2
+text = "Para pausar el juego presiona la tecla \"P\"
+ para despausarlo vuelve a presionar \"P\""
+label_settings = SubResource("LabelSettings_y4j4o")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+offset_left = 88.0
+offset_top = 280.0
+offset_right = 192.0
+offset_bottom = 448.0
+texture = ExtResource("5_mak3p")
+expand_mode = 1
+
+[node name="boton_Continuar" parent="." instance=ExtResource("6_lndmo")]
+layout_mode = 0
+offset_top = 448.0
+offset_bottom = 512.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eqd3c")
+}
+
+[node name="AudioBoton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_sfu4w")
+bus = &"SFX"
+
+[node name="AudioBackGround" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kap1f")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="boton_Continuar/imagenBoton" to="." method="_on_Continuar_boton_pressed"]
+
+[editable path="boton_Continuar"]

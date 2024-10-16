@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://doyyw71t6q0mv"]
+
+[ext_resource type="Script" path="res://scripts/well_come_screem.gd" id="1_2c7cf"]
+[ext_resource type="Texture2D" uid="uid://ba3b6hcm4kt5d" path="res://recursos/fondos/background.png" id="1_b7aam"]
+[ext_resource type="Texture2D" uid="uid://b7upusqmcir3x" path="res://recursos/fondos/machu288x512.png" id="2_3ixmj"]
+[ext_resource type="FontFile" uid="uid://cw20mwo8wpqyv" path="res://recursos/fonts/advanced_pixel-7.ttf" id="3_3iaoa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dvtp0"]
+font = ExtResource("3_3iaoa")
+font_size = 40
+font_color = Color(1, 0.243137, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_06d17"]
+font = ExtResource("3_3iaoa")
+font_size = 30
+font_color = Color(0.819443, 0.782065, 0.286228, 1)
+
+[node name="WellComeScreem" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2c7cf")
+
+[node name="TextureRect_fondo_azul" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_b7aam")
+
+[node name="TextureRect_fondo_machu" type="TextureRect" parent="TextureRect_fondo_azul"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_3ixmj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 112.0
+offset_right = 288.0
+offset_bottom = 240.0
+
+[node name="ProximoDestino" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "BIENVENIDOS A"
+label_settings = SubResource("LabelSettings_dvtp0")
+horizontal_alignment = 1
+
+[node name="Destino" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "MACHU PICCHU"
+label_settings = SubResource("LabelSettings_06d17")
+horizontal_alignment = 1
+
+[node name="pasarPantalla" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="pasarPantalla" to="." method="_on_pasar_pantalla_timeout"]

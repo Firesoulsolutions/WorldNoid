@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1hfes2vri0rn"
+path="res://.godot/imported/cloud-of-sorrow(autor katzen tupas).mp3-fcef267500380d24415647d1b010222e.mp3str"
+
+[deps]
+
+source_file="res://recursos/musica/cloud-of-sorrow(autor katzen tupas).mp3"
+dest_files=["res://.godot/imported/cloud-of-sorrow(autor katzen tupas).mp3-fcef267500380d24415647d1b010222e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

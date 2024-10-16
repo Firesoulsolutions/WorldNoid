@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bywhkwvclh6ph"]
+
+[ext_resource type="Script" path="res://scripts/aircraft.gd" id="1_pjkgy"]
+[ext_resource type="Texture2D" uid="uid://bmniio60rxr0s" path="res://recursos/sprites/avion2.png" id="2_rkgkp"]
+[ext_resource type="Texture2D" uid="uid://bm674m02mbnyp" path="res://recursos/sprites/flama.png" id="3_vn5au"]
+
+[sub_resource type="Gradient" id="Gradient_g6pl6"]
+offsets = PackedFloat32Array(0, 0.306667, 0.753333, 1)
+colors = PackedColorArray(0.501227, 0.43284, 0.203117, 1, 0.306667, 0.306667, 0.306667, 1, 0.753333, 0.753333, 0.753333, 1, 1, 1, 1, 1)
+
+[node name="Aircraft" type="PathFollow2D"]
+script = ExtResource("1_pjkgy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rkgkp")
+flip_h = true
+
+[node name="propulsor" type="CPUParticles2D" parent="Sprite2D"]
+position = Vector2(-64, 0)
+local_coords = true
+texture = ExtResource("3_vn5au")
+direction = Vector2(-50, 0)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_g6pl6")

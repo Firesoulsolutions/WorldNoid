@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkvnfh7p51hao"]
+
+[ext_resource type="PackedScene" uid="uid://e0i6o0vje7vq" path="res://escenas/Screens/UI/botonPadre.tscn" id="1_gu1k0"]
+
+[node name="boton_aplicar_cambios" instance=ExtResource("1_gu1k0")]
+
+[node name="textoBoton" parent="imagenBoton" index="0"]
+text = "Salir"

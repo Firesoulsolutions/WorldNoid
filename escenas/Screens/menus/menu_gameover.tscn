@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfxg7i68118dx"]
+
+[ext_resource type="Texture2D" uid="uid://ba3b6hcm4kt5d" path="res://recursos/fondos/background.png" id="1_dl0qi"]
+[ext_resource type="Script" path="res://scripts/menu_gameover.gd" id="1_f0i3m"]
+[ext_resource type="Texture2D" uid="uid://cdejo053xljve" path="res://icon.png" id="2_2uyoy"]
+[ext_resource type="FontFile" uid="uid://cw20mwo8wpqyv" path="res://recursos/fonts/advanced_pixel-7.ttf" id="3_lrnbg"]
+[ext_resource type="Texture2D" uid="uid://dgublrcismbqf" path="res://recursos/fondos/RoninSinFondo.png" id="4_4s5ax"]
+[ext_resource type="PackedScene" uid="uid://blamsl0ysh54u" path="res://escenas/Screens/UI/boton_rejugar.tscn" id="5_cbudr"]
+[ext_resource type="PackedScene" uid="uid://dkvnfh7p51hao" path="res://escenas/Screens/UI/boton_salir.tscn" id="7_k6fx8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c22q6"]
+font = ExtResource("3_lrnbg")
+font_size = 30
+font_color = Color(0.878431, 0.117647, 0.529412, 1)
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_edcsi"]
+font = ExtResource("3_lrnbg")
+font_size = 30
+font_color = Color(0.878431, 0.117647, 0.529412, 1)
+outline_size = 1
+
+[node name="menuGameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f0i3m")
+
+[node name="fondo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_dl0qi")
+
+[node name="iconoJuego" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_2uyoy")
+expand_mode = 1
+
+[node name="texto" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 288.0
+offset_bottom = 64.0
+
+[node name="nombreJuego" type="Label" parent="texto"]
+layout_mode = 2
+text = "World Noid"
+label_settings = SubResource("LabelSettings_c22q6")
+
+[node name="by" type="Label" parent="texto"]
+layout_mode = 2
+text = "By Los Ronin"
+label_settings = SubResource("LabelSettings_edcsi")
+horizontal_alignment = 2
+
+[node name="iconoEmpresa" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 56.0
+offset_right = 288.0
+offset_bottom = 184.0
+texture = ExtResource("4_4s5ax")
+expand_mode = 1
+
+[node name="iconoEmpresa2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 184.0
+offset_bottom = 184.0
+texture = ExtResource("4_4s5ax")
+expand_mode = 1
+flip_h = true
+
+[node name="botones" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 224.0
+offset_right = 288.0
+offset_bottom = 424.0
+
+[node name="boton_Rejugar" parent="botones" instance=ExtResource("5_cbudr")]
+layout_mode = 2
+
+[node name="boton_salir" parent="botones" instance=ExtResource("7_k6fx8")]
+layout_mode = 2
+
+[connection signal="pressed" from="botones/boton_Rejugar/imagenBoton" to="." method="_on_rejugar_boton_pressed"]
+[connection signal="pressed" from="botones/boton_salir/imagenBoton" to="." method="_on_salir_boton_pressed"]
+
+[editable path="botones/boton_Rejugar"]
+[editable path="botones/boton_salir"]

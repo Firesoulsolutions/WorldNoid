@@ -1,0 +1,45 @@
+[gd_scene load_steps=10 format=3 uid="uid://bc1oug2cmnu70"]
+
+[ext_resource type="Texture2D" uid="uid://ba3b6hcm4kt5d" path="res://recursos/fondos/background.png" id="1_phyrx"]
+[ext_resource type="Script" path="res://scripts/lvl_4_music.gd" id="1_uma86"]
+[ext_resource type="Texture2D" uid="uid://dp6n7fidwkxbh" path="res://recursos/fondos/murallaChina288x512.png" id="2_7lha2"]
+[ext_resource type="PackedScene" uid="uid://c6xyshyi3stxp" path="res://escenas/entorno/bordes de la pantalla/bordes_de_la_pantalla.tscn" id="3_u8e4q"]
+[ext_resource type="PackedScene" uid="uid://bctfc80v4lqsn" path="res://escenas/entorno/stageDesign/stage_block4.tscn" id="4_bq8h0"]
+[ext_resource type="PackedScene" uid="uid://dakwolrcevkwv" path="res://escenas/jugador/jugador.tscn" id="5_881fx"]
+[ext_resource type="PackedScene" uid="uid://dvn8bxyr752hi" path="res://escenas/pelota/pelota.tscn" id="6_wrlhj"]
+[ext_resource type="PackedScene" uid="uid://cm1vfe0d4vye4" path="res://escenas/Screens/menus/menu_de_pausa.tscn" id="7_h6olo"]
+[ext_resource type="AudioStream" uid="uid://d3l6c1kry76y" path="res://recursos/musica/chinaLevel.mp3" id="9_ur6dx"]
+
+[node name="lvl_4" type="Node2D"]
+script = ExtResource("1_uma86")
+
+[node name="TextureRect_fondo_azul" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_phyrx")
+
+[node name="TextureRect_fondo_muralla" type="TextureRect" parent="TextureRect_fondo_azul"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_7lha2")
+
+[node name="bordesDeLaPantalla" parent="." instance=ExtResource("3_u8e4q")]
+
+[node name="StageBlock" parent="." instance=ExtResource("4_bq8h0")]
+
+[node name="jugador" parent="." instance=ExtResource("5_881fx")]
+position = Vector2(144, 480)
+
+[node name="pelota" parent="." instance=ExtResource("6_wrlhj")]
+position = Vector2(144, 450)
+
+[node name="menuDePausa" parent="." instance=ExtResource("7_h6olo")]
+
+[node name="AudioChina" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ur6dx")
+bus = &"Music"
+
+[connection signal="body_entered" from="bordesDeLaPantalla/bordeAbajo/Area2dPerder" to="." method="_on_area_2d_perder_body_entered"]
+
+[editable path="bordesDeLaPantalla"]

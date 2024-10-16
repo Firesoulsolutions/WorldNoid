@@ -1,0 +1,173 @@
+[gd_scene load_steps=16 format=3 uid="uid://b4a4cvpinmh1d"]
+
+[ext_resource type="Script" path="res://scripts/menu_creditos.gd" id="1_sxhpu"]
+[ext_resource type="Texture2D" uid="uid://5wt4kjax6vua" path="res://recursos/fondos/fonodEstrellas.png" id="2_1djvp"]
+[ext_resource type="FontFile" uid="uid://cw20mwo8wpqyv" path="res://recursos/fonts/advanced_pixel-7.ttf" id="2_5s0ol"]
+[ext_resource type="Texture2D" uid="uid://bwqiraooex1sw" path="res://recursos/fondos/fondoCredits.png" id="2_n8ugb"]
+[ext_resource type="PackedScene" uid="uid://c4rolhf24atu5" path="res://escenas/Screens/UI/boton_volver.tscn" id="3_ot4tw"]
+[ext_resource type="AudioStream" uid="uid://c1hfes2vri0rn" path="res://recursos/musica/cloud-of-sorrow(autor katzen tupas).mp3" id="6_nqjly"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_evck3"]
+font = ExtResource("2_5s0ol")
+font_size = 38
+font_color = Color(1, 0.243137, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgf6r"]
+font = ExtResource("2_5s0ol")
+font_size = 34
+font_color = Color(0.152941, 1, 0.223529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_of46q"]
+font = ExtResource("2_5s0ol")
+font_size = 30
+font_color = Color(0.152941, 1, 0.223529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6h8k5"]
+font = ExtResource("2_5s0ol")
+font_size = 34
+font_color = Color(0.152941, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_80dc1"]
+font = ExtResource("2_5s0ol")
+font_size = 25
+font_color = Color(0.152941, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t5nf8"]
+font = ExtResource("2_5s0ol")
+font_size = 34
+font_color = Color(0.764706, 1, 0.00392157, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ia3rd"]
+font = ExtResource("2_5s0ol")
+font_size = 25
+font_color = Color(0.764706, 1, 0.00392157, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ywoa5"]
+font = ExtResource("2_5s0ol")
+font_size = 34
+font_color = Color(1, 0.0784314, 0.235294, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_605sk"]
+font = ExtResource("2_5s0ol")
+font_size = 25
+font_color = Color(1, 0.0784314, 0.235294, 1)
+
+[node name="MenuCreditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sxhpu")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(288, 512)
+autoscroll = Vector2(15, 15)
+
+[node name="FondoNegro" type="TextureRect" parent="Parallax2D"]
+offset_right = 288.0
+offset_bottom = 512.0
+texture = ExtResource("2_n8ugb")
+
+[node name="Estrellas" type="TextureRect" parent="Parallax2D"]
+offset_right = 324.0
+offset_bottom = 512.0
+texture = ExtResource("2_1djvp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Credits" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "CREDITS"
+label_settings = SubResource("LabelSettings_evck3")
+horizontal_alignment = 1
+
+[node name="DiseñoYDesarrollo" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="titulo" type="Label" parent="VBoxContainer/DiseñoYDesarrollo"]
+layout_mode = 2
+text = "DISEÑO Y DESARROLLO"
+label_settings = SubResource("LabelSettings_fgf6r")
+horizontal_alignment = 1
+
+[node name="nombre" type="Label" parent="VBoxContainer/DiseñoYDesarrollo"]
+layout_mode = 2
+text = "Maximiliano Solmonese"
+label_settings = SubResource("LabelSettings_of46q")
+horizontal_alignment = 1
+
+[node name="Gammeplayprogramación" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="titulol" type="Label" parent="VBoxContainer/Gammeplayprogramación"]
+layout_mode = 2
+text = " PROGRAMACION "
+label_settings = SubResource("LabelSettings_6h8k5")
+horizontal_alignment = 1
+
+[node name="nombre" type="Label" parent="VBoxContainer/Gammeplayprogramación"]
+layout_mode = 2
+text = "Maximiliano Solmonese"
+label_settings = SubResource("LabelSettings_80dc1")
+horizontal_alignment = 1
+
+[node name="ArtesGraficas" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="titulo" type="Label" parent="VBoxContainer/ArtesGraficas"]
+layout_mode = 2
+text = "ARTES GRAFICAS"
+label_settings = SubResource("LabelSettings_t5nf8")
+horizontal_alignment = 1
+
+[node name="nombre" type="Label" parent="VBoxContainer/ArtesGraficas"]
+layout_mode = 2
+text = "Xavier Arts
+vecteezy
+Kenney"
+label_settings = SubResource("LabelSettings_ia3rd")
+horizontal_alignment = 1
+
+[node name="MusicaYSFX" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="titulo" type="Label" parent="VBoxContainer/MusicaYSFX"]
+layout_mode = 2
+text = "MUSICA Y SFX"
+label_settings = SubResource("LabelSettings_ywoa5")
+horizontal_alignment = 1
+
+[node name="nombre" type="Label" parent="VBoxContainer/MusicaYSFX"]
+layout_mode = 2
+text = "Pixabay
+Freesound
+Katzen Tupas"
+label_settings = SubResource("LabelSettings_605sk")
+horizontal_alignment = 1
+
+[node name="boton_volver" parent="." instance=ExtResource("3_ot4tw")]
+layout_mode = 0
+offset_top = 448.0
+offset_bottom = 512.0
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nqjly")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="boton_volver/imagenBoton" to="." method="_on_imagen_boton_pressed"]
+
+[editable path="boton_volver"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfslghaw6p1ir"]
+
+[ext_resource type="PackedScene" uid="uid://e0i6o0vje7vq" path="res://escenas/Screens/UI/botonPadre.tscn" id="1_f33br"]
+
+[node name="boton_jugar" instance=ExtResource("1_f33br")]
+
+[node name="textoBoton" parent="imagenBoton" index="0"]
+text = "Jugar"

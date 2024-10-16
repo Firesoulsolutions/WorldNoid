@@ -1,0 +1,45 @@
+[gd_scene load_steps=10 format=3 uid="uid://djwsajyi6bxg5"]
+
+[ext_resource type="Texture2D" uid="uid://ba3b6hcm4kt5d" path="res://recursos/fondos/background.png" id="1_baeyw"]
+[ext_resource type="Script" path="res://scripts/lvl_3_music.gd" id="1_lolns"]
+[ext_resource type="Texture2D" uid="uid://4tsfa37svxfb" path="res://recursos/fondos/chicheIza288x512.png" id="2_touoi"]
+[ext_resource type="PackedScene" uid="uid://c6xyshyi3stxp" path="res://escenas/entorno/bordes de la pantalla/bordes_de_la_pantalla.tscn" id="3_6hiut"]
+[ext_resource type="PackedScene" uid="uid://cpof2eqixj8tm" path="res://escenas/entorno/stageDesign/stage_block3.tscn" id="4_h34p7"]
+[ext_resource type="PackedScene" uid="uid://dakwolrcevkwv" path="res://escenas/jugador/jugador.tscn" id="5_aj8nm"]
+[ext_resource type="PackedScene" uid="uid://dvn8bxyr752hi" path="res://escenas/pelota/pelota.tscn" id="6_tl3fw"]
+[ext_resource type="PackedScene" uid="uid://cm1vfe0d4vye4" path="res://escenas/Screens/menus/menu_de_pausa.tscn" id="7_qieq7"]
+[ext_resource type="AudioStream" uid="uid://cix78h0xhjr22" path="res://recursos/musica/tex-mex-delight-mexican-mariachi-113044.mp3" id="9_fvv3t"]
+
+[node name="lvl_3" type="Node2D"]
+script = ExtResource("1_lolns")
+
+[node name="TextureRect_fondo_azul" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_baeyw")
+
+[node name="TextureRect_fondo_chiche" type="TextureRect" parent="TextureRect_fondo_azul"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_touoi")
+
+[node name="bordesDeLaPantalla" parent="." instance=ExtResource("3_6hiut")]
+
+[node name="StageBlock" parent="." instance=ExtResource("4_h34p7")]
+
+[node name="jugador" parent="." instance=ExtResource("5_aj8nm")]
+position = Vector2(144, 480)
+
+[node name="pelota" parent="." instance=ExtResource("6_tl3fw")]
+position = Vector2(144, 450)
+
+[node name="menuDePausa" parent="." instance=ExtResource("7_qieq7")]
+
+[node name="AudioMex" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_fvv3t")
+bus = &"Music"
+
+[connection signal="body_entered" from="bordesDeLaPantalla/bordeAbajo/Area2dPerder" to="." method="_on_area_2d_perder_body_entered"]
+
+[editable path="bordesDeLaPantalla"]

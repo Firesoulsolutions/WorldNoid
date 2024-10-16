@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://6vvpsq0bnw"]
+
+[ext_resource type="PackedScene" uid="uid://e0i6o0vje7vq" path="res://escenas/Screens/UI/botonPadre.tscn" id="1_urhix"]
+
+[node name="boton_Credits" instance=ExtResource("1_urhix")]
+
+[node name="textoBoton" parent="imagenBoton" index="0"]
+text = "Credits"

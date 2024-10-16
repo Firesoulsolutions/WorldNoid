@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6xyshyi3stxp"]
+
+[ext_resource type="AudioStream" uid="uid://bb4vyvvk7an6y" path="res://recursos/fx/lose.ogg" id="1_yk28d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q71c5"]
+size = Vector2(18, 514)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jam0g"]
+size = Vector2(328, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cu3n"]
+size = Vector2(328, 26)
+
+[node name="bordesDeLaPantalla" type="Node2D"]
+
+[node name="bordeIzquierdo" type="StaticBody2D" parent="."]
+
+[node name="CollisionBordeIzquierdo" type="CollisionShape2D" parent="bordeIzquierdo"]
+position = Vector2(-8, 255)
+shape = SubResource("RectangleShape2D_q71c5")
+
+[node name="bordeDerecho" type="StaticBody2D" parent="."]
+
+[node name="CollisionBordeDerecho" type="CollisionShape2D" parent="bordeDerecho"]
+position = Vector2(296, 256)
+shape = SubResource("RectangleShape2D_q71c5")
+
+[node name="bordeArriba" type="StaticBody2D" parent="."]
+
+[node name="Collision BordeArriba" type="CollisionShape2D" parent="bordeArriba"]
+position = Vector2(145, -4)
+shape = SubResource("RectangleShape2D_jam0g")
+
+[node name="bordeAbajo" type="StaticBody2D" parent="."]
+
+[node name="Collision BordeAbajo" type="CollisionShape2D" parent="bordeAbajo"]
+position = Vector2(146, 544)
+shape = SubResource("RectangleShape2D_jam0g")
+
+[node name="Area2dPerder" type="Area2D" parent="bordeAbajo"]
+collision_mask = 2
+
+[node name="CollisionPerder" type="CollisionShape2D" parent="bordeAbajo/Area2dPerder"]
+position = Vector2(146, 535)
+shape = SubResource("RectangleShape2D_2cu3n")
+
+[node name="AudioFxPerderVida" type="AudioStreamPlayer" parent="." groups=["FXperderVida"]]
+stream = ExtResource("1_yk28d")
+bus = &"SFX"

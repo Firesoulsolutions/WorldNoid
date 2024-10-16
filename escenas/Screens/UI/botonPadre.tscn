@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://e0i6o0vje7vq"]
+
+[ext_resource type="Texture2D" uid="uid://bert2txx1oyht" path="res://recursos/sprites/BotonAmarillo128x64.png" id="1_ds84f"]
+[ext_resource type="Texture2D" uid="uid://cn0dfov4l4lmi" path="res://recursos/sprites/BotonAzul128x64.png" id="2_vruh4"]
+[ext_resource type="Texture2D" uid="uid://7ump8sm1lqal" path="res://recursos/sprites/BotonVerde128x64.png" id="3_dlj04"]
+[ext_resource type="FontFile" uid="uid://cw20mwo8wpqyv" path="res://recursos/fonts/advanced_pixel-7.ttf" id="4_k07b1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mji3w"]
+font = ExtResource("4_k07b1")
+font_size = 30
+font_color = Color(1, 0.0784314, 1, 1)
+
+[node name="boton_padre" type="HBoxContainer"]
+offset_right = 288.0
+offset_bottom = 64.0
+
+[node name="imagenBoton" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("1_ds84f")
+texture_pressed = ExtResource("2_vruh4")
+texture_hover = ExtResource("3_dlj04")
+
+[node name="textoBoton" type="Label" parent="imagenBoton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 104.0
+offset_bottom = 48.0
+text = "texto"
+label_settings = SubResource("LabelSettings_mji3w")
+horizontal_alignment = 1
+vertical_alignment = 1
